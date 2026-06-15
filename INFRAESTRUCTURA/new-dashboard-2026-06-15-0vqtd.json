@@ -27,6 +27,7 @@
       }
     ],
     "cursorSync": "Off",
+    "description": "",
     "editable": true,
     "elements": {
       "panel-1": {
@@ -162,13 +163,47 @@
           "title": "Fuerza Bruta",
           "transparent": true,
           "vizConfig": {
-            "group": "gauge",
+            "group": "timeseries",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
                 "defaults": {
                   "color": {
                     "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 25,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
                   },
                   "displayName": "Code ${__field.labels.status_code}",
                   "thresholds": {
@@ -188,32 +223,21 @@
                 "overrides": []
               },
               "options": {
-                "barShape": "flat",
-                "barWidthFactor": 0.3,
-                "effects": {
-                  "barGlow": false,
-                  "centerGlow": true,
-                  "gradient": true
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
                 },
-                "endpointMarker": "point",
-                "minVizHeight": 75,
-                "minVizWidth": 75,
-                "orientation": "auto",
-                "reduceOptions": {
-                  "calcs": [
-                    "sum"
-                  ],
-                  "fields": "",
-                  "values": false
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
                 },
-                "segmentCount": 1,
-                "segmentSpacing": 0.3,
-                "shape": "circle",
-                "showThresholdLabels": false,
-                "showThresholdMarkers": false,
-                "sizing": "auto",
-                "sparkline": true,
-                "textMode": "value_and_name"
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
               }
             },
             "version": "13.0.1"
@@ -390,7 +414,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mfenacoac/Grafana/blob/main/INFRAESTRUCTURA/new-dashboard-2026-06-15-0vqtd.json"
+      }
+    ],
     "liveNow": false,
     "preferences": {
       "layout": {

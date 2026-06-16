@@ -27,29 +27,1887 @@
       }
     ],
     "cursorSync": "Off",
-    "description": "",
     "editable": true,
-    "elements": {},
+    "elements": {
+      "panel-10": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "eevlg5d7mkj5sb"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "AnalyticsImport",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n    SUM(row_count) AS Total_Registros\r\nFROM sys.dm_db_partition_stats\r\nWHERE object_id = OBJECT_ID('FBNK_EB_GT01_SMS_SERVICIO')\r\nAND index_id \u003c 2;\r\n",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 10,
+          "links": [],
+          "title": "SMS - SERVICIO TOTAL",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "orange",
+                        "value": 70
+                      },
+                      {
+                        "color": "red",
+                        "value": 85
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-13": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "eevlg5d7mkj5sb"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "FENANC",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n\tCOUNT(*) AS 'No Enviados'\r\nFROM FENANC.dbo.FBNK_EB_GT01_SMS_SERVICIO\r\nWHERE XMLRECORD.value('(/row/c24)[1]', 'NVARCHAR(50)') = 'NO.ENVIADO';",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 13,
+          "links": [],
+          "title": "SMS - No Enviados ",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "orange",
+                        "value": 70
+                      },
+                      {
+                        "color": "red",
+                        "value": 85
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-14": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "eevlg5d7mkj5sb"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "AnalyticsImport",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n\tCOUNT(*) AS 'No Enviados'\r\nFROM FENANC.dbo.FBNK_EB_GT01_SMS_SERVICIO\r\nWHERE XMLRECORD.value('(/row/c24)[1]', 'NVARCHAR(50)') = 'ENVIADO';",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 14,
+          "links": [],
+          "title": "SMS - Enviados ",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-15": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 15,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "\u003ch1 style=\"\n    font-size: 3rem;\n    font-weight: 700;\n    font-family: 'Century';\n    color: #49BF22;\n    padding-bottom: 7px;\n    -- border-bottom: 0.5px solid #FFFFFF;\n    text-align: center;\n\"\u003e\n    SERVICIO SMS BD 10.138.2.198\n\u003c/h1\u003e",
+                "mode": "markdown"
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-16": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ff9gtt3vzuwowd"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "AgenteMovilDB",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "use micoope_sms\r\n\r\nSELECT TOP 20 \r\n\tID,\r\n\tEstatus,\r\n\tDateProcessing AS 'Fecha de Proceso',\r\n\tDescripcionTransaccionDebito AS 'Descripción',\r\n\tCelularDebito AS 'Celular',\r\n\tEstadoEnvioDebito AS 'Estado Debito',\r\n\tEstadoEnvioCredito AS 'Estado Credito',\r\n\tFechaEnvioDebito AS 'Fecha Envio Debito',\r\n\t--FechaEnvioCredito,\r\n\tFechaInsertado AS 'Fecha Insertado',\r\n\tMensajeEstado AS 'Estado'\r\nFROM cnt.smsxenviarft \r\nWHERE MensajeEstado \u003c\u003e 'DEB: Enviado correctamente - ' AND MensajeEstado \u003c\u003e 'CRD: Enviado correctamente - ' AND MensajeEstado \u003c\u003e 'DEB: Enviado correctamente - DEB: Enviado correctamente - '\r\nORDER BY TRY_CONVERT(datetime, DateProcessing, 103) DESC;",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 16,
+          "links": [],
+          "title": "Pen",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "continuous-RdYlGr"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "DescripcionTransaccionDebito"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 180
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Envio Debito"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 196
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Estado Credito"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 133
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Estado Debito"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 129
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Celular"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 106
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Estatus"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 95
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Insertado"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 194
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha de Proceso"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 157
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ID"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 144
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Descripción"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 173
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Envio Debito"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dateTimeAsLocal"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Insertado"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dateTimeAsLocal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": []
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-17": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ff9gtt3vzuwowd"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "AgenteMovilDB",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "USE Micoope_SMS\r\n\r\n\r\nSELECT TOP 20\r\n\tID,\r\n\tEstatus,\r\n\tDateProcessing AS 'Fecha de Proceso',\r\n\tDescripcionTransaccionDebito AS 'Descripción',\r\n\tCelularDebito AS 'Celular',\r\n\tEstadoEnvio AS 'Estado',\r\n\tFechaEnvio AS 'Fecha Envio',\r\n\tFechaInsertado AS 'Fecha Insertado',\r\n\tMensajeEstado AS 'Mensaje' \r\nFROM cnt.smsxenviartt\r\nWHERE MensajeEstado \u003c\u003e 'Enviado correctamente'\r\nORDER BY TRY_CONVERT(datetime, DateProcessing, 103) DESC;",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 17,
+          "links": [],
+          "title": "No enviados 'cnt.smsxenviartt'",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Envio"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": ""
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 187
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Insertado"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dateTimeAsLocal"
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 200
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Estatus"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ID"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 148
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha de Proceso"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 143
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Estado"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 76
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Celular"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 100
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Descripción"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 256
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Envio"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dateTimeAsLocal"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Fecha Insertado"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dateTimeAsLocal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": []
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-18": {
+        "kind": "LibraryPanel",
+        "spec": {
+          "id": 18,
+          "libraryPanel": {
+            "name": "Current Application Pool Uptime  IS 11.183",
+            "uid": "bfc8vneepcmwwe"
+          },
+          "title": "Current Application Pool Uptime"
+        }
+      },
+      "panel-19": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "aepy6fdjilfk0b"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "exemplar": true,
+                        "expr": "windows_iis_current_worker_processes{app=~\"$app\"}",
+                        "format": "time_series",
+                        "interval": "",
+                        "legendFormat": ""
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "The current number of worker processes that are running in the application pool",
+          "id": 19,
+          "links": [],
+          "title": "Current Worker Processes",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      },
+                      {
+                        "color": "rgba(237, 129, 40, 0.89)",
+                        "value": 1
+                      },
+                      {
+                        "color": "#37872D",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "\u003ch1 style=\"\r\n    font-size: 3rem;\r\n    font-weight: 700;\r\n    font-family: 'Century';\r\n    color: #49BF22;\r\n    padding-bottom: 7px;\r\n    -- border-bottom: 0.5px solid #FFFFFF;\r\n    text-align: center;\r\n\"\u003e\r\n    SERVICIO SMS BD 231\r\n\u003c/h1\u003e\r\n",
+                "mode": "html"
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-20": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "aepy6fdjilfk0b"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "exemplar": true,
+                        "expr": "windows_iis_maximum_worker_processes{app=~\"$app\"}",
+                        "format": "time_series",
+                        "interval": "",
+                        "legendFormat": ""
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "The maximum number of worker processes that have been created for the application pool since Windows Process Activation Service (WAS) started",
+          "id": 20,
+          "links": [],
+          "title": "Maximum Worker Processes",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      },
+                      {
+                        "color": "rgba(237, 129, 40, 0.89)",
+                        "value": 1
+                      },
+                      {
+                        "color": "#37872D",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-21": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "aepy6fdjilfk0b"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "exemplar": true,
+                        "expr": "windows_iis_current_application_pool_state{app=~\"$app\",state=\"Running\"}",
+                        "format": "time_series",
+                        "interval": "",
+                        "legendFormat": ""
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "The current status of the Server",
+          "id": 21,
+          "links": [],
+          "title": "Running",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "mappings": [
+                    {
+                      "options": {
+                        "0": {
+                          "color": "dark-red",
+                          "index": 2,
+                          "text": "DOWN"
+                        },
+                        "1": {
+                          "color": "dark-green",
+                          "index": 1,
+                          "text": "UP"
+                        },
+                        "null": {
+                          "color": "dark-orange",
+                          "index": 0,
+                          "text": "N/A"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-22": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "aepy6fdjilfk0b"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": true,
+                        "expr": "increase(windows_iis_requests_total{site=~\"$app\"}[5m])",
+                        "interval": "",
+                        "legendFormat": "{{method}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "Number of HTTP requests by type",
+          "id": 22,
+          "links": [],
+          "title": "Total Requests ",
+          "vizConfig": {
+            "group": "bargauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "short"
+                },
+                "overrides": []
+              },
+              "options": {
+                "displayMode": "gradient",
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "maxVizHeight": 300,
+                "minVizHeight": 16,
+                "minVizWidth": 8,
+                "namePlacement": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true,
+                "sizing": "auto",
+                "text": {},
+                "valueMode": "color"
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-23": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "",
+                      "kind": "DataQuery",
+                      "spec": {},
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 23,
+          "links": [],
+          "title": "New panel",
+          "vizConfig": {
+            "group": "__unconfigured-panel",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {}
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ff9gtt3vzuwowd"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "master",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "Use Micoope_SMS\r\n\r\nSELECT\r\n    'FT_CREDITO' AS Tipo,\r\n    COUNT(*) AS Pendientes\r\nFROM cnt.smsxenviarft\r\nWHERE EstadoEnvioCredito = 'P'\r\nAND FechaInsertado \u003e= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'FT_DEBITO',\r\n    COUNT(*)\r\nFROM cnt.smsxenviarft\r\nWHERE EstadoEnvioDebito = 'P'\r\nAND FechaInsertado \u003e= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'TT',\r\n    COUNT(*)\r\nFROM cnt.smsxenviartt\r\nWHERE EstadoEnvio = 'P'\r\nAND FechaInsertado \u003e= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'AA',\r\n    COUNT(*)\r\nFROM cnt.smsxenviaraa\r\nWHERE EstadoEnvio = 'P'\r\nAND FechaInsertado \u003e= CAST(GETDATE() AS DATE);\r\n",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "Resumen de mensajes encolados por Tipo",
+          "id": 24,
+          "links": [],
+          "title": "Cola de Mensajes",
+          "vizConfig": {
+            "group": "bargauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "displayMode": "gradient",
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "maxVizHeight": 300,
+                "minVizHeight": 16,
+                "minVizWidth": 8,
+                "namePlacement": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [],
+                  "fields": "",
+                  "values": true
+                },
+                "showUnfilled": true,
+                "sizing": "auto",
+                "valueMode": "color"
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-25": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ff9gtt3vzuwowd"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "master",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "USE Micoope_SMS;\r\n\r\nWITH Datos AS (\r\n    SELECT ISNULL(MAX(DATEDIFF(SECOND, FechaInsertado, GETDATE())), 0) AS SegundosTotales\r\n    FROM (\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviarft\r\n        WHERE EstadoEnvioCredito = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviarft\r\n        WHERE EstadoEnvioDebito = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviartt\r\n        WHERE EstadoEnvio = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviaraa\r\n        WHERE EstadoEnvio = 'P'\r\n    ) A\r\n)\r\nSELECT\r\n    --SegundosTotales,\r\n    SegundosTotales / 86400 AS Dias,\r\n    (SegundosTotales % 86400) / 3600 AS Horas,\r\n    (SegundosTotales % 3600) / 60 AS Minutos,\r\n    SegundosTotales % 60 AS Segundos,\r\n    CONCAT(\r\n        SegundosTotales / 86400, 'd ',\r\n        (SegundosTotales % 86400) / 3600, 'h ',\r\n        (SegundosTotales % 3600) / 60, 'm ',\r\n        SegundosTotales % 60, 's'\r\n    ) AS TiempoMasAntiguo\r\nFROM Datos;",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "Tiempo estimado de encolamiento de mensajes",
+          "id": 25,
+          "links": [],
+          "title": "Tiempo de Cola SMS",
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "barShape": "flat",
+                "barWidthFactor": 0.3,
+                "effects": {
+                  "barGlow": false,
+                  "centerGlow": false,
+                  "gradient": true
+                },
+                "endpointMarker": "point",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 1,
+                "segmentSpacing": 0.3,
+                "shape": "gauge",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": false,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      },
+      "panel-26": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ff9gtt3vzuwowd"
+                      },
+                      "group": "mssql",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "master",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "USE Micoope_SMS;\r\n\r\n;WITH Minutos AS (\r\n    SELECT DATEADD(MINUTE,-360,DATEADD(MINUTE,DATEDIFF(MINUTE,0,GETDATE()),0)) AS [time]\r\n    UNION ALL\r\n    SELECT DATEADD(MINUTE,1,[time])\r\n    FROM Minutos\r\n    WHERE [time] \u003c DATEADD(MINUTE,DATEDIFF(MINUTE,0,GETDATE()),0)\r\n)\r\nSELECT\r\n    m.[time],\r\n    ISNULL(x.Pendientes,0) AS Pendientes\r\nFROM Minutos m\r\nLEFT JOIN (\r\n    SELECT\r\n        DATEADD(MINUTE,DATEDIFF(MINUTE,0,FechaInsertado),0) AS [time],\r\n        COUNT(*) AS Pendientes\r\n    FROM cnt.smsxenviartt\r\n    WHERE EstadoEnvio = 'P'\r\n      AND $__timeFilter(FechaInsertado)\r\n    GROUP BY DATEADD(MINUTE,DATEDIFF(MINUTE,0,FechaInsertado),0)\r\n) x\r\n    ON m.[time] = x.[time]\r\nORDER BY m.[time]\r\nOPTION (MAXRECURSION 400);",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "Permite saber si el backlog está aumentando.",
+          "id": 26,
+          "links": [],
+          "title": "Tendencia de Cola",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.0.1"
+          }
+        }
+      }
+    },
     "layout": {
       "kind": "GridLayout",
       "spec": {
-        "items": []
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-21"
+              },
+              "height": 7,
+              "width": 4,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-19"
+              },
+              "height": 7,
+              "width": 4,
+              "x": 4,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-20"
+              },
+              "height": 7,
+              "width": 5,
+              "x": 8,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-23"
+              },
+              "height": 6,
+              "width": 11,
+              "x": 13,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-22"
+              },
+              "height": 9,
+              "width": 24,
+              "x": 0,
+              "y": 7
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-18"
+              },
+              "height": 8,
+              "width": 24,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              },
+              "height": 2,
+              "width": 24,
+              "x": 0,
+              "y": 24
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-10"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 0,
+              "y": 26
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-13"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 8,
+              "y": 26
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-14"
+              },
+              "height": 6,
+              "width": 8,
+              "x": 16,
+              "y": 26
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-15"
+              },
+              "height": 3,
+              "width": 24,
+              "x": 0,
+              "y": 32
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-16"
+              },
+              "height": 9,
+              "width": 24,
+              "x": 0,
+              "y": 35
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-17"
+              },
+              "height": 11,
+              "width": 24,
+              "x": 0,
+              "y": 44
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-24"
+              },
+              "height": 5,
+              "width": 24,
+              "x": 0,
+              "y": 55
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-25"
+              },
+              "height": 4,
+              "width": 24,
+              "x": 0,
+              "y": 60
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-26"
+              },
+              "height": 7,
+              "width": 24,
+              "x": 0,
+              "y": 64
+            }
+          }
+        ]
       }
     },
     "links": [],
     "liveNow": false,
-    "preferences": {
-      "layout": {
-        "kind": "GridLayout",
-        "spec": {
-          "items": []
-        }
-      }
-    },
     "preload": false,
     "tags": [],
     "timeSettings": {
-      "autoRefresh": "",
+      "autoRefresh": "30s",
       "autoRefreshIntervals": [
         "5s",
         "10s",
@@ -63,12 +1921,110 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-6h",
+      "from": "now-5m",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "now",
+      "weekStart": "sunday"
     },
     "title": "SERVICIO SMS",
-    "variables": []
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "SMS",
+            "value": "SMS"
+          },
+          "definition": "label_values(windows_iis_info{job=~\"SMS\"},job)",
+          "hide": "dontHide",
+          "includeAll": false,
+          "label": "job",
+          "multi": false,
+          "name": "job",
+          "options": [],
+          "query": {
+            "group": "prometheus",
+            "kind": "DataQuery",
+            "spec": {
+              "qryType": 1,
+              "query": "label_values(windows_iis_info{job=~\"SMS\"},job)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": false,
+          "current": {
+            "text": "10.138.11.183:9182",
+            "value": "10.138.11.183:9182"
+          },
+          "definition": "label_values(windows_iis_info,instance)",
+          "hide": "dontHide",
+          "includeAll": false,
+          "label": "instance",
+          "multi": false,
+          "name": "instance",
+          "options": [],
+          "query": {
+            "group": "prometheus",
+            "kind": "DataQuery",
+            "spec": {
+              "qryType": 1,
+              "query": "label_values(windows_iis_info,instance)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "wwwSMST247020",
+            "value": "wwwSMST247020"
+          },
+          "definition": "label_values(windows_iis_current_application_pool_state{job=~\"$job\", instance=~\"$instance\"},app)",
+          "hide": "dontHide",
+          "includeAll": false,
+          "label": "Application",
+          "multi": false,
+          "name": "app",
+          "options": [],
+          "query": {
+            "group": "prometheus",
+            "kind": "DataQuery",
+            "spec": {
+              "qryType": 1,
+              "query": "label_values(windows_iis_current_application_pool_state{job=~\"$job\", instance=~\"$instance\"},app)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      }
+    ]
   }
 }

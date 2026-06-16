@@ -1071,7 +1071,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
+                        "editorMode": "builder",
                         "expr": "sum by(hostname) (count_over_time({hostname=~\"DSSIMWS01|DSSIMWS09|DSSIMWS08\", filename=\"log_ATM\"} |~ `Session` [$interval]))",
                         "legendFormat": "{{hostname}}",
                         "queryType": "range",
@@ -1093,7 +1093,7 @@
           "title": "Session Expirated por SRV",
           "transparent": true,
           "vizConfig": {
-            "group": "bargauge",
+            "group": "stat",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
@@ -1120,18 +1120,11 @@
                 "overrides": []
               },
               "options": {
-                "displayMode": "gradient",
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": false
-                },
-                "maxVizHeight": 300,
-                "minVizHeight": 16,
-                "minVizWidth": 8,
-                "namePlacement": "auto",
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "auto",
                 "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                   "calcs": [
                     "last"
@@ -1139,9 +1132,9 @@
                   "fields": "",
                   "values": false
                 },
-                "showUnfilled": true,
-                "sizing": "auto",
-                "valueMode": "color"
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
               }
             },
             "version": "13.0.1"
@@ -1383,7 +1376,7 @@
         "5d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-15m",
+      "from": "now-12h",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"
@@ -1395,13 +1388,9 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": [
-              "DSSIMWS08",
-              "DSSIMWS09"
-            ],
+            "text": "All",
             "value": [
-              "DSSIMWS08",
-              "DSSIMWS09"
+              "$__all"
             ]
           },
           "definition": "",
@@ -1492,8 +1481,8 @@
           "auto_count": 30,
           "auto_min": "10s",
           "current": {
-            "text": "1h",
-            "value": "1h"
+            "text": "12h",
+            "value": "12h"
           },
           "hide": "dontHide",
           "label": "interval",
@@ -1515,7 +1504,7 @@
               "value": "30m"
             },
             {
-              "selected": true,
+              "selected": false,
               "text": "1h",
               "value": "1h"
             },
@@ -1525,7 +1514,7 @@
               "value": "6h"
             },
             {
-              "selected": false,
+              "selected": true,
               "text": "12h",
               "value": "12h"
             },

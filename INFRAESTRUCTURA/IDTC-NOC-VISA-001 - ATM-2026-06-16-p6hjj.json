@@ -27,6 +27,7 @@
       }
     ],
     "cursorSync": "Off",
+    "description": "",
     "editable": true,
     "elements": {
       "panel-10": {
@@ -630,6 +631,7 @@
           "id": 15,
           "links": [],
           "title": "Conteo Transacciones por MIN",
+          "transparent": true,
           "vizConfig": {
             "group": "table",
             "kind": "VizConfig",
@@ -1167,7 +1169,7 @@
                           "kind": "ElementReference",
                           "name": "panel-12"
                         },
-                        "height": 6,
+                        "height": 7,
                         "width": 7,
                         "x": 0,
                         "y": 0
@@ -1180,7 +1182,7 @@
                           "kind": "ElementReference",
                           "name": "panel-8"
                         },
-                        "height": 6,
+                        "height": 7,
                         "width": 7,
                         "x": 7,
                         "y": 0
@@ -1193,7 +1195,7 @@
                           "kind": "ElementReference",
                           "name": "panel-14"
                         },
-                        "height": 8,
+                        "height": 7,
                         "width": 10,
                         "x": 14,
                         "y": 0
@@ -1206,10 +1208,23 @@
                           "kind": "ElementReference",
                           "name": "panel-15"
                         },
-                        "height": 8,
-                        "width": 14,
+                        "height": 7,
+                        "width": 7,
                         "x": 0,
-                        "y": 6
+                        "y": 7
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-10"
+                        },
+                        "height": 8,
+                        "width": 17,
+                        "x": 7,
+                        "y": 7
                       }
                     },
                     {
@@ -1222,20 +1237,7 @@
                         "height": 10,
                         "width": 24,
                         "x": 0,
-                        "y": 14
-                      }
-                    },
-                    {
-                      "kind": "GridLayoutItem",
-                      "spec": {
-                        "element": {
-                          "kind": "ElementReference",
-                          "name": "panel-10"
-                        },
-                        "height": 10,
-                        "width": 24,
-                        "x": 0,
-                        "y": 24
+                        "y": 15
                       }
                     }
                   ]
@@ -1320,6 +1322,18 @@
     "links": [
       {
         "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mfenacoac/Grafana/blob/main/INFRAESTRUCTURA/IDTC-NOC-VISA-001%20-%20ATM-2026-06-16-p6hjj.json"
+      },
+      {
+        "asDropdown": false,
         "icon": "dashboard",
         "includeVars": false,
         "keepTime": false,
@@ -1369,7 +1383,7 @@
         "5d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-1h",
+      "from": "now-15m",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"

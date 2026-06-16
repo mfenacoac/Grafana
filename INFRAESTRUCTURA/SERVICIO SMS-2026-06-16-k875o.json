@@ -27,6 +27,7 @@
       }
     ],
     "cursorSync": "Off",
+    "description": "",
     "editable": true,
     "elements": {
       "panel-10": {
@@ -1737,7 +1738,7 @@
                 "kind": "ElementReference",
                 "name": "panel-23"
               },
-              "height": 6,
+              "height": 7,
               "width": 11,
               "x": 13,
               "y": 0
@@ -1902,7 +1903,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mfenacoac/Grafana/blob/main/INFRAESTRUCTURA/SERVICIO%20SMS-2026-06-16-k875o.json"
+      }
+    ],
     "liveNow": false,
     "preload": false,
     "tags": [],
@@ -1921,7 +1935,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-5m",
+      "from": "now-6h",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now",

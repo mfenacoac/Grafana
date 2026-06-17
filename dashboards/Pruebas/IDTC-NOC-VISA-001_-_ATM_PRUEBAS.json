@@ -1,0 +1,1156 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 183,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "basic",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "count_over_time({filename=\"log_ATM\", hostname=~\"DSSIMWS09|DSSIMWS08|DSSIMWS01\"} |= `�SO Request to T24 for` [1m])",
+          "legendFormat": "{{hostname}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Conteo de Transacciones ok 1M",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 0,
+                  "text": "NO HAY RECHAZOS"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 7,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "basic",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "sum by(hostname) (count_over_time({hostname=~\"DSSIMWS01|DSSIMWS09|DSSIMWS08\", filename=\"log_ATM\"} |~ `Session` [$interval]))OR on() vector(0)",
+          "legendFormat": "{{hostname}}",
+          "queryType": "range",
+          "refId": "A",
+          "step": ""
+        }
+      ],
+      "title": "Session Expirated por SRV",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rechazos",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 0,
+                  "text": "NO HAY RECHAZOS"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "min": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "dark-red",
+                "value": 5000
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 14,
+      "maxPerRow": 6,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "min",
+            "median",
+            "count"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "9a91662f",
+              "operator": "=~",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "DSSIMWS01",
+                "DSSIMWS08",
+                "DSSIMWS09"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [
+                "ATMReplyQueue publish"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            },
+            {
+              "id": "min-duration",
+              "operator": ">",
+              "tag": "duration",
+              "value": "7s",
+              "valueType": "duration"
+            },
+            {
+              "id": "duration-type",
+              "value": "trace"
+            }
+          ],
+          "limit": 100000,
+          "metricsQueryType": "range",
+          "query": "{resource.host.name=~\"\\\\$Server\" && resource.service.name=\"jboss-eap\" && name=\"ATMReplyQueue publish\"}",
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "ATM Queue Publish all servers Rechazos",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "100 - (avg by(instance) (irate(windows_cpu_time_total{instance=~\"10.138.7.219:9182|10.138.7.218:9182|10.138.7.232:9182\", mode=\"idle\"}[30s])) * 100)",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "Uso de CPU SRVS VISA",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Transacciones",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "dark-red",
+                "value": 7000
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 13,
+      "maxPerRow": 6,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "min",
+            "median",
+            "count"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "9a91662f",
+              "operator": "=~",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "DSSIMWS01",
+                "DSSIMWS08",
+                "DSSIMWS09"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [
+                "ATMReplyQueue publish"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            },
+            {
+              "id": "min-duration",
+              "operator": ">",
+              "tag": "duration",
+              "value": "",
+              "valueType": "duration"
+            },
+            {
+              "id": "duration-type",
+              "value": "trace"
+            }
+          ],
+          "limit": 100000,
+          "metricsQueryType": "range",
+          "query": "{resource.host.name=~\"\\\\$Server\" && resource.service.name=\"jboss-eap\" && name=\"ATMReplyQueue publish\"}",
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "ATM Queue Publish all servers",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 3,
+      "panels": [],
+      "repeat": "Server",
+      "title": "Servidor Visa $Server",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#0af2ff94",
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "Trazas",
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green"
+              },
+              {
+                "color": "dark-red",
+                "value": 7000
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "min",
+            "median",
+            "count"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "9a91662f",
+              "operator": "=~",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "$Server"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [
+                "ATMReplyQueue publish"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            }
+          ],
+          "limit": 10000,
+          "metricsQueryType": "range",
+          "query": "{resource.host.name=~\"\\\\$Server\" && resource.service.name=\"jboss-eap\" && name=\"ATMReplyQueue publish\"}",
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "ATM Queue Publish",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "90d96534",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "$Server"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [
+                "ATMQueue publish"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            }
+          ],
+          "limit": 1000,
+          "metricsQueryType": "range",
+          "query": "{resource.host.name=\"$Server\" && name=\"ATMQueue publish\"}",
+          "queryType": "traceql",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Trazas VISA",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 6,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "{hostname=\"$Server\", filename=\"log_ATM\"} |~ `(?i)${Buscar_trama}`",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS VISA",
+      "transparent": true,
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 7,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "{hostname=~\"$Server\", filename=\"log_ATM\"} |= `Session Expiration`",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS Session Expired",
+      "transparent": true,
+      "type": "logs"
+    }
+  ],
+  "preload": false,
+  "refresh": "1m",
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "tempo",
+          "uid": "ef0jpyns59mo0c"
+        },
+        "definition": "",
+        "description": "",
+        "includeAll": true,
+        "label": "Server",
+        "name": "Server",
+        "options": [],
+        "query": {
+          "label": "host.name",
+          "refId": "TempoDatasourceVariableQueryEditor-VariableQuery",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "(DSSIMWS08|DSSIMWS09|DSSIMWS01)",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "label": "Buscar_traza",
+        "name": "Buscar_traza",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "label": "Buscar_trama",
+        "name": "Buscar_trama",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      },
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "1h",
+          "value": "1h"
+        },
+        "label": "interval",
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": true,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "IDTC-NOC-VISA-001 - ATM PRUEBAS",
+  "uid": "2188acfb-0e8d-4f64-55b3-95570f879ef0",
+  "version": 2
+}

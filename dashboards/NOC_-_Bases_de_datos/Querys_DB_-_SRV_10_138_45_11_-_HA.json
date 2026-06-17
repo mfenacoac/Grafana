@@ -1,0 +1,1302 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 209,
+  "liveNow": false,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h1 style=\"\r\n    font-size: 3rem;\r\n    font-weight: 700;\r\n    font-family: 'Century';\r\n    color: #49BF22;\r\n    padding-bottom: 7px;\r\n    -- border-bottom: 0.5px solid #FFFFFF;\r\n    text-align: center;\r\n\">\r\n    Servidor Base de Datos HA 45.11 \r\n</h1>\r\n",
+        "mode": "html"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [],
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "dfj6dlki2skcgb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "applyToRow": false,
+              "mode": "gradient",
+              "type": "color-background"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false,
+            "wrapText": false
+          },
+          "max": 1800,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Minutos Activa"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 20
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 20
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.inspect",
+                "value": true
+              },
+              {
+                "id": "custom.width",
+                "value": 147
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Origin Program"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Base de Datos"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 156
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SesionID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 122
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usuario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 133
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP del Cliente"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 154
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Inicio"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 169
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Programa de Origen"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 279
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Consulta SQL"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": null
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estatus"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 126
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "md",
+        "enablePagination": false,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "dfj6dlki2skcgb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "IF EXISTS(\r\n    SELECT 1\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n    JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n    JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n    JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n)\r\nBEGIN\r\n    SELECT TOP 10 \r\n        ses.session_id AS [SesionID],\r\n        DB_NAME(ses.database_id) AS [Base de Datos],\r\n        ses.login_name AS [Usuario],\r\n        ses.program_name AS [Programa de Origen],\r\n        ses.status AS [Estatus],\r\n\t\tFORMAT(at.transaction_begin_time, 'dd/MM/yy  -  HH:mm:ss') AS [Inicio],\r\n        CASE \r\n\t\t\tWHEN DATEDIFF(SECOND, at.transaction_begin_time, GETDATE()) < 60 THEN 1\r\n\t\t\tELSE DATEDIFF(MINUTE, at.transaction_begin_time, GETDATE()) \r\n\t\tEND AS [Minutos Activa],\r\n        con.client_net_address AS [IP del Cliente],\r\n        ses.host_name AS [Host],\r\n        ISNULL(t.text, '-') AS [Consulta SQL]\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n    JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n    JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n    JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n    LEFT JOIN sys.dm_exec_requests r ON ses.session_id = r.session_id\r\n    OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) AS t\r\n    WHERE ast.elapsed_time_seconds > 5\r\n    ORDER BY at.transaction_begin_time \r\nEND\r\nELSE\r\nBEGIN \r\n    SELECT \r\n        '' AS [SesionID],\r\n        '' AS [Base de Datos],\r\n        '' AS [Usuario],\r\n        '' AS [Programa de Origen],\r\n        '' AS [Estatus],\r\n        '' AS [Inicio],\r\n        '' AS [Minutos Activa],\r\n        '' AS [IP del Cliente],\r\n        '' AS [Host],\r\n        '' AS [Consulta SQL]\r\nEND\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sesiones Activas",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SesionID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Base de Datos"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 161
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usuario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 172
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Programa de Origen"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 207
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Minutos Activa"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 139
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 121
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP del Cliente"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 133
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 15,
+      "options": {
+        "cellHeight": "md",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "FENANC",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "IF EXISTS(\r\n    SELECT 1\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n\t  JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n\t  JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n\t  JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n\t  LEFT JOIN sys.dm_exec_requests r ON ses.session_id = r.session_id\r\n\t  OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) AS t\r\n\t\twhere con.client_net_address = '10.138.7.92'\r\n)\r\nBEGIN\r\n\tSELECT \r\n\t  ses.session_id AS [SesionID],\r\n\t  DB_NAME(ses.database_id) AS [Base de Datos],\r\n\t  ses.login_name AS [Usuario],\r\n\t  ses.program_name AS [Programa de Origen],\r\n    ses.status AS [Estatus],\r\n\t\tFORMAT(at.transaction_begin_time, 'dd/MM/yy  -  HH:mm:ss') AS [Inicio],\r\n\t  CASE \r\n\t\t\tWHEN DATEDIFF(SECOND, at.transaction_begin_time, GETDATE()) < 60 THEN 1\r\n\t\t\tELSE DATEDIFF(MINUTE, at.transaction_begin_time, GETDATE()) \r\n\t\tEND AS [Minutos Activa],\r\n\t  con.client_net_address AS [IP del Cliente],\r\n\t  ses.host_name AS [Host],\r\n\t  ISNULL(t.text, '-') AS [Consulta SQL]\r\n\tFROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n\t  JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n\t  JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n\t  JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n\t  LEFT JOIN sys.dm_exec_requests r ON ses.session_id = r.session_id\r\n\t  OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) AS t\r\n\tWHERE --ast.elapsed_time_seconds > 5 AND \r\n\t\tcon.client_net_address = '10.138.7.92'\r\n\tORDER BY at.transaction_begin_time \r\nEND\r\nELSE\r\nBEGIN \r\n    SELECT \r\n        '' AS [SesionID],\r\n        '' AS [Base de Datos],\r\n        '' AS [Usuario],\r\n        '' AS [Programa de Origen],\r\n    \t\t'' AS [Estatus],\r\n        '' AS [Inicio],\r\n        '' AS [Minutos Activa],\r\n        '' AS [IP del Cliente],\r\n        '' AS [Host],\r\n\t\t\t\t'' AS [Consulta SQL]\r\nEND",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sesiones de SERVICIOSBD del 7.92",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SesionID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Base de Datos"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 161
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usuario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 172
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Programa de Origen"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 207
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Minutos Activa"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 139
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 121
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP del Cliente"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 133
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "md",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "FENANC",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "IF EXISTS(\r\n    SELECT 1\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n\t  JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n\t  JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n\t  JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n\t  LEFT JOIN sys.dm_exec_requests r ON ses.session_id = r.session_id\r\n\t  OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) AS t\r\n\t\twhere ses.login_name  != 'FENASER'\r\n)\r\nBEGIN\r\n\tSELECT \r\n\t  ses.session_id AS [SesionID],\r\n\t  DB_NAME(ses.database_id) AS [Base de Datos],\r\n\t  ses.login_name AS [Usuario],\r\n\t  ses.program_name AS [Programa de Origen],\r\n    ses.status AS [Estatus],\r\n\t\tFORMAT(at.transaction_begin_time, 'dd/MM/yy  -  HH:mm:ss') AS [Inicio],\r\n\t  CASE \r\n\t\t\tWHEN DATEDIFF(SECOND, at.transaction_begin_time, GETDATE()) < 60 THEN 1\r\n\t\t\tELSE DATEDIFF(MINUTE, at.transaction_begin_time, GETDATE()) \r\n\t\tEND AS [Minutos Activa],\r\n\t  con.client_net_address AS [IP del Cliente],\r\n\t  ses.host_name AS [Host],\r\n\t  ISNULL(t.text, '-') AS [Consulta SQL]\r\n\tFROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n\t  JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n\t  JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n\t  JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n\t  LEFT JOIN sys.dm_exec_requests r ON ses.session_id = r.session_id\r\n\t  OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) AS t\r\n\tWHERE --ast.elapsed_time_seconds > 5 AND \r\n\t\tses.login_name  != 'FENASER'\r\n\tORDER BY at.transaction_begin_time \r\nEND\r\nELSE\r\nBEGIN \r\n    SELECT \r\n        '' AS [SesionID],\r\n        '' AS [Base de Datos],\r\n        '' AS [Usuario],\r\n        '' AS [Programa de Origen],\r\n\t\t\t\t'' AS [Estatus],\r\n        '' AS [Inicio],\r\n        '' AS [Minutos Activa],\r\n        '' AS [IP del Cliente],\r\n        '' AS [Host],\r\n\t\t\t\t'' AS [Consulta SQL]\r\nEND",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sesiones NO pertenecientes a T24",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Elapsed Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 116
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "IF EXISTS(\r\n    SELECT 1\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n    JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n    JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n    JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n    WHERE ast.elapsed_time_seconds > 0\r\n    --AND ses.program_name <> 'Microsoft JDBC Driver for SQL Server'\r\n    AND ses.program_name LIKE '%jTDS%'\r\n)\r\nBEGIN\r\n    SELECT TOP 10 \r\n        ses.session_id AS [Session ID],\r\n        DB_NAME(database_id) AS [Database Name],\r\n        CASE at.transaction_state\r\n            WHEN 0 THEN 'init'\r\n            WHEN 1 THEN 'init'\r\n            WHEN 2 THEN 'active'\r\n            WHEN 3 THEN 'ended'\r\n            WHEN 4 THEN 'committing'\r\n            WHEN 6 THEN 'committed'\r\n            WHEN 7 THEN 'rolling back'\r\n            ELSE 'other'\r\n        END AS [Transaction State],\r\n\t\tFORMAT(at.transaction_begin_time, 'dd/MM/yy  -  HH:mm:ss') AS [Transaction Start Time],\r\n        ast.elapsed_time_seconds AS [Elapsed Time],\r\n        CASE \r\n            WHEN at.transaction_type = 1 THEN 'Read/Write'\r\n            WHEN at.transaction_type = 2 THEN 'Read-Only'\r\n            ELSE 'System'\r\n        END AS [Transaction Type],\r\n        ses.login_name AS [Login],\r\n        ses.program_name AS [Origin Program],\r\n        con.client_net_address AS [Client IP],\r\n        ses.host_name AS [Host Name]\r\n    FROM sys.dm_tran_active_snapshot_database_transactions AS ast\r\n    JOIN sys.dm_tran_active_transactions AS at ON at.transaction_id = ast.transaction_id\r\n    JOIN sys.dm_exec_sessions AS ses ON ses.session_id = ast.session_id\r\n    JOIN sys.dm_exec_connections AS con ON con.session_id = ses.session_id\r\n WHERE ast.elapsed_time_seconds > 0\r\n    --AND ses.program_name <> 'Microsoft JDBC Driver for SQL Server'\r\n    AND ses.program_name LIKE '%jTDS%'\r\n    ORDER BY at.transaction_begin_time \r\nEND\r\nELSE\r\nBEGIN \r\n    SELECT \r\n        '' AS [Session ID],\r\n        '' AS [Database Name],\r\n        '' AS [Transaction State],\r\n        '' AS [Transaction Start Time],\r\n        '' AS [Elapsed Time],\r\n        '' AS [Transaction Type],\r\n        '' AS [Login],\r\n        '' AS [Origin Program],\r\n        '' AS [Client IP],\r\n        '' AS [Host Name]\r\nEND\r\n ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sesiones Activas Jbloader - T24 JDBC",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "dfj6dlki2skcgb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "applyToRow": false,
+              "type": "color-background"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false,
+            "wrapText": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "I/O Estimado (KB)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HoraInicio"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              },
+              {
+                "id": "custom.width",
+                "value": 191
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Espera_ms"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              },
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU_ms"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              },
+              {
+                "id": "custom.width",
+                "value": 99
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usuario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 128
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP_Cliente"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 107
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SesionID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 85
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BaseDatos"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "EstadoSesion"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "EstadoRequest"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 126
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LecturasLogicas"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 127
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": true,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "dfj6dlki2skcgb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- CPU ALTO\r\nSELECT TOP 10\r\n    conn.session_id              AS SesionID,\r\n    sess.login_name              AS Usuario,\r\n    sess.host_name               AS HostName,\r\n    sess.program_name            AS Programa,\r\n    DB_NAME(req.database_id)     AS BaseDatos,\r\n\r\n    sess.status                  AS EstadoSesion,\r\n    req.status                   AS EstadoRequest,\r\n    --req.command                  AS Comando,\r\n\r\n    --req.wait_type                AS TipoEspera,\r\n    req.wait_time                AS Espera_ms,\r\n\r\n    req.cpu_time                 AS CPU_ms,\r\n    req.logical_reads            AS LecturasLogicas,\r\n\r\n    --conn.net_transport           AS TransporteRed,\r\n    conn.client_net_address      AS IP_Cliente,\r\n    conn.connect_time            AS HoraInicio,\r\n\r\n    LEFT(REPLACE(sqltext.text, CHAR(10), ' '), 300) AS Consulta\r\nFROM sys.dm_exec_connections conn\r\nJOIN sys.dm_exec_sessions sess \r\n    ON conn.session_id = sess.session_id\r\nLEFT JOIN sys.dm_exec_requests req  \r\n    ON conn.session_id = req.session_id\r\nOUTER APPLY sys.dm_exec_sql_text(req.sql_handle) AS sqltext\r\nWHERE req.session_id IS NOT NULL\r\n  AND req.cpu_time > 0\r\nORDER BY req.cpu_time DESC, req.wait_time DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sesiones con CPU Alto",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tiempo_Espera_Seg"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 181
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Base_De_Datos"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 126
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sesion_Bloqueadora"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 182
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sesion_Bloqueada"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 144
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 7,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "IF EXISTS (SELECT 1 FROM sys.dm_exec_requests WHERE blocking_session_id <> 0)\r\nBEGIN\r\n    SELECT \r\n        -- 1. INFORMACIÓN DE LA SESIÓN BLOQUEADA (La víctima)\r\n        r.session_id AS 'Sesion Bloqueada',\r\n        s_blocked.login_name AS 'Usuario Bloqueado',\r\n        s_blocked.host_name AS 'Servidor Bloqueado',\r\n        s_blocked.program_name AS 'App Bloqueada',\r\n        DB_NAME(r.database_id) AS 'Base de Datos',\r\n        CAST(r.wait_time / 1000.0 AS DECIMAL(10,2)) AS 'Segundos Activa',\r\n        r.wait_type AS 'Tipo de Espera',\r\n        LEFT(t_blocked.text, 200) AS 'Consulta Bloqueada',\r\n\r\n        -- 2. INFORMACIÓN DE LA SESIÓN BLOQUEADORA (El responsable)\r\n        r.blocking_session_id AS 'Sesion Bloqueadora',\r\n        s_blocker.login_name AS 'Usuario Bloqueador',\r\n        s_blocker.host_name AS 'Servidor Bloqueador',\r\n        s_blocker.program_name AS 'App Bloqueadora',\r\n        s_blocker.status AS 'Estado Bloqueador',\r\n        LEFT(t_blocker.text, 200) AS 'Ultima Consulta Bloqueador'\r\n\r\n    FROM sys.dm_exec_requests r\r\n    -- Unimos con sesiones para obtener datos de la VÍCTIMA\r\n    INNER JOIN sys.dm_exec_sessions s_blocked \r\n        ON r.session_id = s_blocked.session_id\r\n    OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) t_blocked\r\n    \r\n    -- Unimos con sesiones para obtener datos del RESPONSABLE\r\n    LEFT JOIN sys.dm_exec_sessions s_blocker \r\n        ON r.blocking_session_id = s_blocker.session_id\r\n    -- Unimos con conexiones para saber qué fue lo último que ejecutó el bloqueador\r\n    LEFT JOIN sys.dm_exec_connections c_blocker \r\n        ON s_blocker.session_id = c_blocker.session_id\r\n    OUTER APPLY sys.dm_exec_sql_text(c_blocker.most_recent_sql_handle) t_blocker\r\n\r\n    WHERE r.blocking_session_id <> 0\r\n    ORDER BY r.wait_time DESC;\r\nEND\r\nELSE\r\nBEGIN \r\n    -- Se devuelven las mismas columnas vacías si no hay bloqueos\r\n    SELECT \r\n        '' AS 'Sesion Bloqueada',\r\n        '' AS 'Usuario Bloqueado',\r\n        '' AS 'Servidor Bloqueado',\r\n        '' AS 'App Bloqueada',\r\n        '' AS 'Base de Datos',\r\n        '' AS 'Segundos Activa',\r\n        '' AS 'Tipo de Espera',\r\n        '' AS 'Consulta Bloqueada',\r\n        '' AS 'Sesion Bloqueadora',\r\n        '' AS 'Usuario Bloqueador',\r\n        '' AS 'Servidor Bloqueador',\r\n        '' AS 'App Bloqueadora',\r\n        '' AS 'Estado Bloqueador',\r\n        '' AS 'Ultima Consulta Bloqueador';\r\nEND",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Bloqueos en BD",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "md",
+        "enablePagination": false,
+        "showHeader": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "FENANC",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH CPU_Stats AS (\r\n    SELECT  \r\n        total_worker_time / execution_count AS AvgCPU,\r\n        execution_count,\r\n        total_worker_time AS TotalCPU,\r\n        text AS Consulta\r\n    FROM sys.dm_exec_query_stats \r\n    CROSS APPLY sys.dm_exec_sql_text(sql_handle)\r\n)\r\nSELECT TOP 5\r\n    Consulta,\r\n    (TotalCPU * 100.0 / SUM(TotalCPU) OVER()) AS 'Porcentaje CPU'\r\nFROM CPU_Stats\r\nORDER BY 'Porcentaje CPU' DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Consultas mas frecuentes",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 0,
+        "y": 69
+      },
+      "id": 17,
+      "options": {
+        "annotations": {
+          "clustering": -1,
+          "multiLane": false
+        },
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "100 - (avg by(instance) (irate(windows_cpu_time_total{job=~\"BD\", instance=\"10.138.45.11\", mode=\"idle\"}[30s])) * 100)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "30s",
+  "schemaVersion": 42,
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Querys DB - SRV 10.138.45.11 - HA",
+  "uid": "7aa84e2a-c73e-4850-9647-ee54rer8e857c791",
+  "version": 12,
+  "weekStart": "sunday"
+}

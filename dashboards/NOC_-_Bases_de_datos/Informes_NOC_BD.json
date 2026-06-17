@@ -1,0 +1,398 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 85,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "libraryPanel": {
+        "name": "Banner231",
+        "uid": "cf1255qa4xtkwe"
+      },
+      "title": "",
+      "type": "library-panel-ref"
+    },
+    {
+      "datasource": {
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "TotalSpaceGB",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Tabla",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SET NOCOUNT ON;\r\n\r\nDECLARE @DBName NVARCHAR(128);\r\nDECLARE @SQL NVARCHAR(MAX);\r\n\r\n-- Tabla temporal para almacenar resultados\r\nIF OBJECT_ID('tempdb..#DBSpaceInfo') IS NOT NULL DROP TABLE #DBSpaceInfo;\r\nCREATE TABLE #DBSpaceInfo (\r\n    DatabaseName SYSNAME,\r\n    TableName SYSNAME,\r\n    TotalSpaceGB DECIMAL(18,2)\r\n);\r\n\r\n-- Tabla para registrar errores\r\nIF OBJECT_ID('tempdb..#ErroresDB') IS NOT NULL DROP TABLE #ErroresDB;\r\nCREATE TABLE #ErroresDB (\r\n    DatabaseName SYSNAME,\r\n    ErrorMessage NVARCHAR(MAX),\r\n    ErrorTime DATETIME DEFAULT GETDATE()\r\n);\r\n\r\n-- Cursor con bases a las que tienes acceso\r\nDECLARE db_cursor CURSOR FOR\r\nSELECT name \r\nFROM sys.databases \r\nWHERE state_desc = 'ONLINE' \r\n    AND name NOT IN ('master', 'tempdb', 'model', 'msdb')\r\n    AND HAS_DBACCESS(name) = 1;\r\n\r\nOPEN db_cursor;\r\nFETCH NEXT FROM db_cursor INTO @DBName;\r\n\r\nWHILE @@FETCH_STATUS = 0\r\nBEGIN\r\n    SET @SQL = N'\r\n    BEGIN TRY\r\n        USE ' + QUOTENAME(@DBName) + N';\r\n\r\n        INSERT INTO #DBSpaceInfo (DatabaseName, TableName, TotalSpaceGB)\r\n        SELECT \r\n            N''' + @DBName + N''' AS DatabaseName,\r\n            t.name AS TableName,\r\n            CAST(SUM(a.total_pages) * 8.0 / 1024 / 1024 AS DECIMAL(18,2)) AS TotalSpaceGB\r\n        FROM \r\n            sys.tables t\r\n        INNER JOIN \r\n            sys.indexes i ON t.object_id = i.object_id\r\n        INNER JOIN \r\n            sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id\r\n        INNER JOIN \r\n            sys.allocation_units a ON p.partition_id = a.container_id\r\n        INNER JOIN \r\n            sys.schemas s ON t.schema_id = s.schema_id\r\n        WHERE \r\n            i.index_id <= 1 AND p.rows > 0\r\n        GROUP BY \r\n            s.name, t.name;\r\n    END TRY\r\n    BEGIN CATCH\r\n        INSERT INTO #ErroresDB (DatabaseName, ErrorMessage)\r\n        VALUES (N''' + @DBName + N''', ERROR_MESSAGE());\r\n    END CATCH;\r\n    ';\r\n\r\n    EXEC sp_executesql @SQL;\r\n\r\n    FETCH NEXT FROM db_cursor INTO @DBName;\r\nEND\r\n\r\nCLOSE db_cursor;\r\nDEALLOCATE db_cursor;\r\n\r\n-- Resultados: Espacio por tabla\r\nSELECT TOP 10 \r\n    DatabaseName AS 'Base de Datos',\r\n    TableName AS 'Tabla',\r\n    TotalSpaceGB AS 'Espacio GB'\r\nFROM #DBSpaceInfo\r\nORDER BY TotalSpaceGB DESC;\r\n\r\n-- (Opcional) Ver errores si los hubo\r\n-- SELECT * FROM #ErroresDB;\r\n\r\n-- Limpiar tablas temporales\r\nDROP TABLE IF EXISTS #DBSpaceInfo;\r\nDROP TABLE IF EXISTS #ErroresDB;\r\n ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Top 10 - Tablas con mayor tamaño - SRV 231",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff0g2y9j6qi2of"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "TotalSpaceGB",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Tabla",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff0g2y9j6qi2of"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SET NOCOUNT ON;\r\n\r\nDECLARE @DBName NVARCHAR(128);\r\nDECLARE @SQL NVARCHAR(MAX);\r\n\r\n-- Tabla temporal para almacenar resultados\r\nIF OBJECT_ID('tempdb..#DBSpaceInfo') IS NOT NULL DROP TABLE #DBSpaceInfo;\r\nCREATE TABLE #DBSpaceInfo (\r\n    DatabaseName SYSNAME,\r\n    TableName SYSNAME,\r\n    TotalSpaceGB DECIMAL(18,2)\r\n);\r\n\r\n-- Tabla para registrar errores\r\nIF OBJECT_ID('tempdb..#ErroresDB') IS NOT NULL DROP TABLE #ErroresDB;\r\nCREATE TABLE #ErroresDB (\r\n    DatabaseName SYSNAME,\r\n    ErrorMessage NVARCHAR(MAX),\r\n    ErrorTime DATETIME DEFAULT GETDATE()\r\n);\r\n\r\n-- Cursor con bases a las que tienes acceso\r\nDECLARE db_cursor CURSOR FOR\r\nSELECT name \r\nFROM sys.databases \r\nWHERE state_desc = 'ONLINE' \r\n    AND name NOT IN ('master', 'tempdb', 'model', 'msdb')\r\n    AND HAS_DBACCESS(name) = 1;\r\n\r\nOPEN db_cursor;\r\nFETCH NEXT FROM db_cursor INTO @DBName;\r\n\r\nWHILE @@FETCH_STATUS = 0\r\nBEGIN\r\n    SET @SQL = N'\r\n    BEGIN TRY\r\n        USE ' + QUOTENAME(@DBName) + N';\r\n\r\n        INSERT INTO #DBSpaceInfo (DatabaseName, TableName, TotalSpaceGB)\r\n        SELECT \r\n            N''' + @DBName + N''' AS DatabaseName,\r\n            t.name AS TableName,\r\n            CAST(SUM(a.total_pages) * 8.0 / 1024 / 1024 AS DECIMAL(18,2)) AS TotalSpaceGB\r\n        FROM \r\n            sys.tables t\r\n        INNER JOIN \r\n            sys.indexes i ON t.object_id = i.object_id\r\n        INNER JOIN \r\n            sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id\r\n        INNER JOIN \r\n            sys.allocation_units a ON p.partition_id = a.container_id\r\n        INNER JOIN \r\n            sys.schemas s ON t.schema_id = s.schema_id\r\n        WHERE \r\n            i.index_id <= 1 AND p.rows > 0\r\n        GROUP BY \r\n            s.name, t.name;\r\n    END TRY\r\n    BEGIN CATCH\r\n        INSERT INTO #ErroresDB (DatabaseName, ErrorMessage)\r\n        VALUES (N''' + @DBName + N''', ERROR_MESSAGE());\r\n    END CATCH;\r\n    ';\r\n\r\n    EXEC sp_executesql @SQL;\r\n\r\n    FETCH NEXT FROM db_cursor INTO @DBName;\r\nEND\r\n\r\nCLOSE db_cursor;\r\nDEALLOCATE db_cursor;\r\n\r\n-- Resultados: Espacio por tabla\r\nSELECT TOP 10 \r\n    DatabaseName AS 'Base de Datos',\r\n    TableName AS 'Tabla',\r\n    TotalSpaceGB AS 'Espacio GB'\r\nFROM #DBSpaceInfo\r\nORDER BY TotalSpaceGB DESC;\r\n\r\n-- (Opcional) Ver errores si los hubo\r\n-- SELECT * FROM #ErroresDB;\r\n\r\n-- Limpiar tablas temporales\r\nDROP TABLE IF EXISTS #DBSpaceInfo;\r\nDROP TABLE IF EXISTS #ErroresDB;\r\n  ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Top 10 - Tablas con mayor tamaño - SRV 171",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff11ua0sh9h4wa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "TotalSpaceGB",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Tabla",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff11ua0sh9h4wa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SET NOCOUNT ON;\r\n\r\nDECLARE @DBName NVARCHAR(128);\r\nDECLARE @SQL NVARCHAR(MAX);\r\n\r\n-- Tabla temporal para almacenar resultados\r\nIF OBJECT_ID('tempdb..#DBSpaceInfo') IS NOT NULL DROP TABLE #DBSpaceInfo;\r\nCREATE TABLE #DBSpaceInfo (\r\n    DatabaseName SYSNAME,\r\n    TableName SYSNAME,\r\n    TotalSpaceGB DECIMAL(18,2)\r\n);\r\n\r\n-- Tabla para registrar errores\r\nIF OBJECT_ID('tempdb..#ErroresDB') IS NOT NULL DROP TABLE #ErroresDB;\r\nCREATE TABLE #ErroresDB (\r\n    DatabaseName SYSNAME,\r\n    ErrorMessage NVARCHAR(MAX),\r\n    ErrorTime DATETIME DEFAULT GETDATE()\r\n);\r\n\r\n-- Cursor con bases a las que tienes acceso\r\nDECLARE db_cursor CURSOR FOR\r\nSELECT name \r\nFROM sys.databases \r\nWHERE state_desc = 'ONLINE' \r\n    AND name NOT IN ('master', 'tempdb', 'model', 'msdb')\r\n    AND HAS_DBACCESS(name) = 1;\r\n\r\nOPEN db_cursor;\r\nFETCH NEXT FROM db_cursor INTO @DBName;\r\n\r\nWHILE @@FETCH_STATUS = 0\r\nBEGIN\r\n    SET @SQL = N'\r\n    BEGIN TRY\r\n        USE ' + QUOTENAME(@DBName) + N';\r\n\r\n        INSERT INTO #DBSpaceInfo (DatabaseName, TableName, TotalSpaceGB)\r\n        SELECT \r\n            N''' + @DBName + N''' AS DatabaseName,\r\n            t.name AS TableName,\r\n            CAST(SUM(a.total_pages) * 8.0 / 1024 / 1024 AS DECIMAL(18,2)) AS TotalSpaceGB\r\n        FROM \r\n            sys.tables t\r\n        INNER JOIN \r\n            sys.indexes i ON t.object_id = i.object_id\r\n        INNER JOIN \r\n            sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id\r\n        INNER JOIN \r\n            sys.allocation_units a ON p.partition_id = a.container_id\r\n        INNER JOIN \r\n            sys.schemas s ON t.schema_id = s.schema_id\r\n        WHERE \r\n            i.index_id <= 1 AND p.rows > 0\r\n        GROUP BY \r\n            s.name, t.name;\r\n    END TRY\r\n    BEGIN CATCH\r\n        INSERT INTO #ErroresDB (DatabaseName, ErrorMessage)\r\n        VALUES (N''' + @DBName + N''', ERROR_MESSAGE());\r\n    END CATCH;\r\n    ';\r\n\r\n    EXEC sp_executesql @SQL;\r\n\r\n    FETCH NEXT FROM db_cursor INTO @DBName;\r\nEND\r\n\r\nCLOSE db_cursor;\r\nDEALLOCATE db_cursor;\r\n\r\n-- Resultados: Espacio por tabla\r\nSELECT TOP 10 \r\n    DatabaseName AS 'Base de Datos',\r\n    TableName AS 'Tabla',\r\n    TotalSpaceGB AS 'Espacio GB'\r\nFROM #DBSpaceInfo\r\nORDER BY TotalSpaceGB DESC;\r\n\r\n-- (Opcional) Ver errores si los hubo\r\n-- SELECT * FROM #ErroresDB;\r\n\r\n-- Limpiar tablas temporales\r\nDROP TABLE IF EXISTS #DBSpaceInfo;\r\nDROP TABLE IF EXISTS #ErroresDB;\r\n  ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Top 10 - Tablas con mayor tamaño - SRV 71",
+      "type": "barchart"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Informes NOC BD",
+  "uid": "b3d158a4-b2fb-42a0-b190-0e3abad7d86b",
+  "version": 11
+}

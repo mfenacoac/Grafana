@@ -1,0 +1,1550 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 4270746545274880,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Source (GitHub)",
+      "tooltip": "View source file in repository",
+      "type": "link",
+      "url": "https://github.com/mfenacoac/Grafana/blob/main/INFRAESTRUCTURA/SERVICIO%20SMS-2026-06-16-k875o.json"
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "description": "The current status of the Server",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 1,
+                  "text": "UP"
+                },
+                "null": {
+                  "color": "dark-orange",
+                  "index": 0,
+                  "text": "N/A"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "exemplar": true,
+          "expr": "windows_iis_current_application_pool_state{app=~\"$app\",state=\"Running\"}",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Running",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "description": "The current number of worker processes that are running in the application pool",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": 0
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 19,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "exemplar": true,
+          "expr": "windows_iis_current_worker_processes{app=~\"$app\"}",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Current Worker Processes",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "description": "The maximum number of worker processes that have been created for the application pool since Windows Process Activation Service (WAS) started",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": 0
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 8,
+        "y": 0
+      },
+      "id": 20,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "exemplar": true,
+          "expr": "windows_iis_maximum_worker_processes{app=~\"$app\"}",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Maximum Worker Processes",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 13,
+        "y": 0
+      },
+      "id": 23,
+      "options": {},
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": "New panel",
+      "type": "__unconfigured-panel"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "aepy6fdjilfk0b"
+      },
+      "description": "Number of HTTP requests by type",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        }
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 22,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "text": {},
+        "valueMode": "color"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "aepy6fdjilfk0b"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "increase(windows_iis_requests_total{site=~\"$app\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{method}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Requests ",
+      "type": "bargauge"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 18,
+      "libraryPanel": {
+        "name": "Current Application Pool Uptime  IS 11.183",
+        "uid": "bfc8vneepcmwwe"
+      },
+      "title": "Current Application Pool Uptime",
+      "type": "library-panel-ref"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h1 style=\"\r\n    font-size: 3rem;\r\n    font-weight: 700;\r\n    font-family: 'Century';\r\n    color: #49BF22;\r\n    padding-bottom: 7px;\r\n    -- border-bottom: 0.5px solid #FFFFFF;\r\n    text-align: center;\r\n\">\r\n    SERVICIO SMS BD 231\r\n</h1>\r\n",
+        "mode": "html"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [],
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 26
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    SUM(row_count) AS Total_Registros\r\nFROM sys.dm_db_partition_stats\r\nWHERE object_id = OBJECT_ID('FBNK_EB_GT01_SMS_SERVICIO')\r\nAND index_id < 2;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "SMS - SERVICIO TOTAL",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 26
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "FENANC",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n\tCOUNT(*) AS 'No Enviados'\r\nFROM FENANC.dbo.FBNK_EB_GT01_SMS_SERVICIO\r\nWHERE XMLRECORD.value('(/row/c24)[1]', 'NVARCHAR(50)') = 'NO.ENVIADO';",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "SMS - No Enviados ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "eevlg5d7mkj5sb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 26
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AnalyticsImport",
+          "datasource": {
+            "type": "mssql",
+            "uid": "eevlg5d7mkj5sb"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n\tCOUNT(*) AS 'No Enviados'\r\nFROM FENANC.dbo.FBNK_EB_GT01_SMS_SERVICIO\r\nWHERE XMLRECORD.value('(/row/c24)[1]', 'NVARCHAR(50)') = 'ENVIADO';",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "SMS - Enviados ",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h1 style=\"\n    font-size: 3rem;\n    font-weight: 700;\n    font-family: 'Century';\n    color: #49BF22;\n    padding-bottom: 7px;\n    -- border-bottom: 0.5px solid #FFFFFF;\n    text-align: center;\n\">\n    SERVICIO SMS BD 10.138.2.198\n</h1>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [],
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff9gtt3vzuwowd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DescripcionTransaccionDebito"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Envio Debito"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 196
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estado Credito"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 133
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estado Debito"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 129
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Celular"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 106
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estatus"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Insertado"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 194
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha de Proceso"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 157
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 144
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Descripción"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 173
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Envio Debito"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Insertado"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AgenteMovilDB",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff9gtt3vzuwowd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "use micoope_sms\r\n\r\nSELECT TOP 20 \r\n\tID,\r\n\tEstatus,\r\n\tDateProcessing AS 'Fecha de Proceso',\r\n\tDescripcionTransaccionDebito AS 'Descripción',\r\n\tCelularDebito AS 'Celular',\r\n\tEstadoEnvioDebito AS 'Estado Debito',\r\n\tEstadoEnvioCredito AS 'Estado Credito',\r\n\tFechaEnvioDebito AS 'Fecha Envio Debito',\r\n\t--FechaEnvioCredito,\r\n\tFechaInsertado AS 'Fecha Insertado',\r\n\tMensajeEstado AS 'Estado'\r\nFROM cnt.smsxenviarft \r\nWHERE MensajeEstado <> 'DEB: Enviado correctamente - ' AND MensajeEstado <> 'CRD: Enviado correctamente - ' AND MensajeEstado <> 'DEB: Enviado correctamente - DEB: Enviado correctamente - '\r\nORDER BY TRY_CONVERT(datetime, DateProcessing, 103) DESC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Pen",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff9gtt3vzuwowd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Envio"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": ""
+              },
+              {
+                "id": "custom.width",
+                "value": 187
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Insertado"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              },
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estatus"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 148
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha de Proceso"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 143
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Estado"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 76
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Celular"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Descripción"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 256
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Envio"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fecha Insertado"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 17,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "AgenteMovilDB",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff9gtt3vzuwowd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "USE Micoope_SMS\r\n\r\n\r\nSELECT TOP 20\r\n\tID,\r\n\tEstatus,\r\n\tDateProcessing AS 'Fecha de Proceso',\r\n\tDescripcionTransaccionDebito AS 'Descripción',\r\n\tCelularDebito AS 'Celular',\r\n\tEstadoEnvio AS 'Estado',\r\n\tFechaEnvio AS 'Fecha Envio',\r\n\tFechaInsertado AS 'Fecha Insertado',\r\n\tMensajeEstado AS 'Mensaje' \r\nFROM cnt.smsxenviartt\r\nWHERE MensajeEstado <> 'Enviado correctamente'\r\nORDER BY TRY_CONVERT(datetime, DateProcessing, 103) DESC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "No enviados 'cnt.smsxenviartt'",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff9gtt3vzuwowd"
+      },
+      "description": "Resumen de mensajes encolados por Tipo",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 24,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "master",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff9gtt3vzuwowd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "Use Micoope_SMS\r\n\r\nSELECT\r\n    'FT_CREDITO' AS Tipo,\r\n    COUNT(*) AS Pendientes\r\nFROM cnt.smsxenviarft\r\nWHERE EstadoEnvioCredito = 'P'\r\nAND FechaInsertado >= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'FT_DEBITO',\r\n    COUNT(*)\r\nFROM cnt.smsxenviarft\r\nWHERE EstadoEnvioDebito = 'P'\r\nAND FechaInsertado >= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'TT',\r\n    COUNT(*)\r\nFROM cnt.smsxenviartt\r\nWHERE EstadoEnvio = 'P'\r\nAND FechaInsertado >= CAST(GETDATE() AS DATE)\r\n\r\nUNION ALL\r\n\r\nSELECT\r\n    'AA',\r\n    COUNT(*)\r\nFROM cnt.smsxenviaraa\r\nWHERE EstadoEnvio = 'P'\r\nAND FechaInsertado >= CAST(GETDATE() AS DATE);\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Cola de Mensajes",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff9gtt3vzuwowd"
+      },
+      "description": "Tiempo estimado de encolamiento de mensajes",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 60
+      },
+      "id": 25,
+      "options": {
+        "barShape": "flat",
+        "barWidthFactor": 0.3,
+        "effects": {
+          "barGlow": false,
+          "centerGlow": false,
+          "gradient": true
+        },
+        "endpointMarker": "point",
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "segmentCount": 1,
+        "segmentSpacing": 0.3,
+        "shape": "gauge",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false,
+        "sizing": "auto",
+        "sparkline": false,
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "master",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff9gtt3vzuwowd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "USE Micoope_SMS;\r\n\r\nWITH Datos AS (\r\n    SELECT ISNULL(MAX(DATEDIFF(SECOND, FechaInsertado, GETDATE())), 0) AS SegundosTotales\r\n    FROM (\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviarft\r\n        WHERE EstadoEnvioCredito = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviarft\r\n        WHERE EstadoEnvioDebito = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviartt\r\n        WHERE EstadoEnvio = 'P'\r\n\r\n        UNION ALL\r\n\r\n        SELECT FechaInsertado\r\n        FROM cnt.smsxenviaraa\r\n        WHERE EstadoEnvio = 'P'\r\n    ) A\r\n)\r\nSELECT\r\n    --SegundosTotales,\r\n    SegundosTotales / 86400 AS Dias,\r\n    (SegundosTotales % 86400) / 3600 AS Horas,\r\n    (SegundosTotales % 3600) / 60 AS Minutos,\r\n    SegundosTotales % 60 AS Segundos,\r\n    CONCAT(\r\n        SegundosTotales / 86400, 'd ',\r\n        (SegundosTotales % 86400) / 3600, 'h ',\r\n        (SegundosTotales % 3600) / 60, 'm ',\r\n        SegundosTotales % 60, 's'\r\n    ) AS TiempoMasAntiguo\r\nFROM Datos;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Tiempo de Cola SMS",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "ff9gtt3vzuwowd"
+      },
+      "description": "Permite saber si el backlog está aumentando.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        }
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 64
+      },
+      "id": 26,
+      "options": {
+        "annotations": {
+          "clustering": -1,
+          "multiLane": false
+        },
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "dataset": "master",
+          "datasource": {
+            "type": "mssql",
+            "uid": "ff9gtt3vzuwowd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "USE Micoope_SMS;\r\n\r\n;WITH Minutos AS (\r\n    SELECT DATEADD(MINUTE,-360,DATEADD(MINUTE,DATEDIFF(MINUTE,0,GETDATE()),0)) AS [time]\r\n    UNION ALL\r\n    SELECT DATEADD(MINUTE,1,[time])\r\n    FROM Minutos\r\n    WHERE [time] < DATEADD(MINUTE,DATEDIFF(MINUTE,0,GETDATE()),0)\r\n)\r\nSELECT\r\n    m.[time],\r\n    ISNULL(x.Pendientes,0) AS Pendientes\r\nFROM Minutos m\r\nLEFT JOIN (\r\n    SELECT\r\n        DATEADD(MINUTE,DATEDIFF(MINUTE,0,FechaInsertado),0) AS [time],\r\n        COUNT(*) AS Pendientes\r\n    FROM cnt.smsxenviartt\r\n    WHERE EstadoEnvio = 'P'\r\n      AND $__timeFilter(FechaInsertado)\r\n    GROUP BY DATEADD(MINUTE,DATEDIFF(MINUTE,0,FechaInsertado),0)\r\n) x\r\n    ON m.[time] = x.[time]\r\nORDER BY m.[time]\r\nOPTION (MAXRECURSION 400);",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Tendencia de Cola",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "30s",
+  "schemaVersion": 42,
+  "templating": {
+    "list": [
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "SMS",
+          "value": "SMS"
+        },
+        "datasource": {
+          "type": "prometheus"
+        },
+        "definition": "label_values(windows_iis_info{job=~\"SMS\"},job)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(windows_iis_info{job=~\"SMS\"},job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "regexApplyTo": "value",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "10.138.11.183:9182",
+          "value": "10.138.11.183:9182"
+        },
+        "datasource": {
+          "type": "prometheus"
+        },
+        "definition": "label_values(windows_iis_info,instance)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(windows_iis_info,instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "regexApplyTo": "value",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "wwwSMST247020",
+          "value": "wwwSMST247020"
+        },
+        "datasource": {
+          "type": "prometheus"
+        },
+        "definition": "label_values(windows_iis_current_application_pool_state{job=~\"$job\", instance=~\"$instance\"},app)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Application",
+        "multi": false,
+        "name": "app",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(windows_iis_current_application_pool_state{job=~\"$job\", instance=~\"$instance\"},app)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "regexApplyTo": "value",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "SERVICIO SMS",
+  "uid": "dafpbprjery800d",
+  "version": 3,
+  "weekStart": "sunday"
+}

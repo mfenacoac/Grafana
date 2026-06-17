@@ -1,0 +1,203 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 190,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "index": 0,
+                  "text": "¡Rechazos VISA!"
+                },
+                "to": 99999
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "Transacciones OK",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green"
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "sum by(job) (count_over_time({hostname=~\"DSSIMWS01|DSSIMWS09|DSSIMWS08\", filename=\"log_ATM\"} |~ `Session` [$__interval]))",
+          "legendFormat": "{{job}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Servicio VISA",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "dark-red",
+                  "index": 0,
+                  "text": "¡Servicio IIS de DEVEL caído!"
+                },
+                "to": 99999
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "Generador de Token OK",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green"
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 3,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "sum by(instance) (count_over_time({hostname=\"PREPRODF0EBANK\", client=~\"TCIB\"} |~ `HTTP Status-Code 503` [$__interval]))",
+          "legendFormat": "{{job}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "MICOOPE Devel",
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "IDTC-NOC-LOGS-001 - T24",
+  "uid": "d6e59a93-e721-4b17-84f8-022cce2aaaaa",
+  "version": 20
+}

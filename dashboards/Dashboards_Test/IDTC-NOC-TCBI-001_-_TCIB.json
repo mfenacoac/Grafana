@@ -1,0 +1,670 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 198,
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showControls": false,
+        "showFieldSelector": false,
+        "showLabels": false,
+        "showLevel": true,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "timestampResolution": "ms",
+        "unwrappedColumns": false,
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "{hostname=\"PREPRODF0EBANK\", filename=\"LOG_SERVER\"} |~ `(?i)${Buscar_trama}` or `ERROR` or `IRIS-RUNTIME-A-3001`",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS TCIB - PREPRODF03BANK  29.125 - APPL",
+      "transparent": true,
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "gauge"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": false,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Duration"
+          }
+        ]
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "90d96534",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "client",
+              "value": [
+                "TCIB"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            },
+            {
+              "id": "min-duration",
+              "operator": ">",
+              "tag": "duration",
+              "value": "",
+              "valueType": "duration"
+            },
+            {
+              "id": "63a8dab7",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "PREPRODF0EBANK"
+              ],
+              "valueType": "string"
+            }
+          ],
+          "limit": 2000,
+          "metricsQueryType": "range",
+          "query": "{resource.client=\"TCIB\" && resource.host.name=\"PREPRODF0EBANK\"}",
+          "queryType": "traceql",
+          "refId": "A",
+          "spss": 10,
+          "tableType": "traces"
+        }
+      ],
+      "title": "Trazas TCIB - 29.125 - APPL",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showControls": false,
+        "showFieldSelector": false,
+        "showLabels": false,
+        "showLevel": true,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "timestampResolution": "ms",
+        "unwrappedColumns": false,
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "{hostname=\"DSSIMWS05\", filename=\"C:\\\\Temenos\\\\R18\\\\3rdParty\\\\As\\\\jboss-eap-7.2\\\\standalone\\\\log\\\\server.log\"} |~ `(?i)${Buscar_trama}` or `ERROR`",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS TCIB - DSSIMWS05 7.225 - WS",
+      "transparent": true,
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "gauge"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        }
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": false,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Duration"
+          }
+        ]
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "90d96534",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "client",
+              "value": [
+                "TCIB"
+              ],
+              "valueType": "string"
+            },
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            },
+            {
+              "id": "ece623dd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "DSSIMWS05"
+              ],
+              "valueType": "string"
+            }
+          ],
+          "limit": 2000,
+          "metricsQueryType": "range",
+          "query": "{resource.client=\"TCIB\" && resource.host.name=\"DSSIMWS05\"}",
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Trazas TCIB - 7.225 - WS",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bermal0aoyxvkc"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 7,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showControls": false,
+        "showFieldSelector": false,
+        "showLabels": false,
+        "showLevel": true,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "timestampResolution": "ms",
+        "unwrappedColumns": false,
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bermal0aoyxvkc"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "{hostname=\"DSSIMWS04\", filename=\"jboss-eap-7.2\"} |~ `ERROR` or `INFO`",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS TCIB - 7.224 - WS",
+      "transparent": true,
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "ef0jpyns59mo0c"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "gauge"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dtdurationms"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": false,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Duration"
+          }
+        ]
+      },
+      "pluginVersion": "13.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "ef0jpyns59mo0c"
+          },
+          "filters": [
+            {
+              "id": "5a45d1fd",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": []
+            },
+            {
+              "id": "7a43e9e5",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "name",
+              "value": []
+            },
+            {
+              "id": "97c5654e",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "host.name",
+              "value": [
+                "DSSIMWS04"
+              ],
+              "valueType": "string"
+            }
+          ],
+          "limit": 2000,
+          "metricsQueryType": "range",
+          "query": "{resource.host.name=\"DSSIMWS04\"}",
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Trazas TCIB - 7.224 - WS",
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "templating": {
+    "list": [
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "tempo",
+          "uid": "ef0jpyns59mo0c"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Server",
+        "multi": true,
+        "name": "Server",
+        "options": [],
+        "query": {
+          "label": "host.name",
+          "refId": "TempoDatasourceVariableQueryEditor-VariableQuery",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "(PREPRODF0EBANK|DSSIMWS05|DSSIMWS04)",
+        "regexApplyTo": "value",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "hide": 0,
+        "label": "Buscar_traza",
+        "name": "Buscar_traza",
+        "query": "",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "error",
+          "value": "error"
+        },
+        "hide": 0,
+        "label": "Buscar_trama",
+        "name": "Buscar_trama",
+        "query": "error",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "10m",
+          "value": "10m"
+        },
+        "hide": 0,
+        "label": "interval",
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": true,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "2d",
+            "value": "2d"
+          },
+          {
+            "selected": false,
+            "text": "3d",
+            "value": "3d"
+          },
+          {
+            "selected": false,
+            "text": "4d",
+            "value": "4d"
+          },
+          {
+            "selected": false,
+            "text": "5d",
+            "value": "5d"
+          },
+          {
+            "selected": false,
+            "text": "6d",
+            "value": "6d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,2d,3d,4d,5d,6d,7d,14d,30d",
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "IDTC-NOC-TCBI-001 - TCIB",
+  "uid": "7d78415f-cf05-4c73-b7ac-0def3fcdeb2a",
+  "version": 1
+}
